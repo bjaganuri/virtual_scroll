@@ -7,8 +7,9 @@
 				overflow-y:auto;
 			}
 			.child_dom{
+				margin: 5px 0px;
 				height:100px;
-				outline:2px solid #eee;
+				outline:2px solid red;
 			}
 		</style>
 	</head>
@@ -21,8 +22,6 @@
 			var parent_dom = document.getElementById("parent_dom");	
 			parent_dom.onscroll = function(){
 				if(parent_dom.scrollTop > ((500*2)*pageNo-550)){
-					console.log(parent_dom.scrollTop);
-					console.log(((500*2)*pageNo-550));
 					generateData(0);
 					pageNo++;
 				}
