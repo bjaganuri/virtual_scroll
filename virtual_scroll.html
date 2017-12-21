@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>Virtual scroll</title>
+		<style>
+			#parent_dom{
+				height:500px;
+				overflow-y:auto;
+			}
+			.child_dom{
+				height:100px;
+				outline:2px solid #eee;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="parent_dom">
+			<div class="child_dom"></div>
+		</div>
+		<script type="text/javascript">
+			var pageNo = 1;
+			var parent_dom = document.getElementById("parent_dom");	
+			parent_dom.onscroll = function(){
+				if(parent_dom.scrollTop > ((500*2)*pageNo-550)){
+					console.log(parent_dom.scrollTop);
+					console.log(((500*2)*pageNo-550));
+					generateData(0);
+					pageNo++;
+				}
+			}
+			function generateData(first){
+				var lim = 10;
+				if(first){
+					lim = 9;
+				}
+				var firstChild = parent_dom.firstElementChild;	
+				for(var i=0; i<lim;i++){
+					parent_dom.appendChild(firstChild.cloneNode());
+				}
+			}
+			generateData(1);
+		</script>
+	</body>
+</html>
